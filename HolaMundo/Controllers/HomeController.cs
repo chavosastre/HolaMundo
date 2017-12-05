@@ -25,20 +25,16 @@ namespace HolaMundo.Controllers
             return View(model);
         }
 
-        [HttpGet]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+            ViewBag.UnInt = 45;
+            ViewBag.UnaFecha = new DateTime(1800,4,7);
+            ViewData["MiMensaje"] = "Esto fué creado con ViewData";
 
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Contact(int edad)
-        {
-            ViewBag.Message = "Your contact page." + edad;
 
-            return View();
-        }
     }
 }

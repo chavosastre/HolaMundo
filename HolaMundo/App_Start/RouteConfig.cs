@@ -13,14 +13,14 @@ namespace HolaMundo
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Ejemplo",
-                url: "Ejemplo",
-                defaults: new {
-                    controller = "Home",
-                    action = "Contact"
-                }
-            );
+            //routes.MapRoute(
+            //    name: "Ejemplo",
+            //    url: "Ejemplo",
+            //    defaults: new {
+            //        controller = "Home",
+            //        action = "Contact"
+            //    }
+            //);
 
             routes.MapRoute(
                 name: "Default",

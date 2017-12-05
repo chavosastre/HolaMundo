@@ -10,11 +10,9 @@ namespace HolaMundo.Controllers
     public class HomeController : Controller
     {
 
-        public FileResult Index()
+        public ActionResult Index()
         {
-            var ruta = Server.MapPath("HSDC15_-_5_User_Experience.pdf");
-            return File(ruta, "application/pdf", "User_Experience.pdf");
-            //return View();
+             return View();
         }
 
         public ActionResult About()
@@ -27,9 +25,9 @@ namespace HolaMundo.Controllers
             return View(model);
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(string nombre, int edad)
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your contact page." + nombre + edad.ToString();
 
             return View();
         }

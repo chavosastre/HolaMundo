@@ -10,30 +10,11 @@ namespace HolaMundo.Controllers
     public class HomeController : Controller
     {
 
-        //Ejemplo para mandar un json
-        //public class Persona
-        //{
-        //    public string Nombre { get; set; }
-        //    public int Edad { get; set; }
-        //}
-
-        public ActionResult Index()
+        public FileResult Index()
         {
-            //Ejemplo para mandar un json
-            //var persona1 = new Persona()
-            //{
-            //    Nombre = "Salvador",
-            //    Edad = 40
-            //};
-            //var persona2 = new Persona()
-            //{
-            //    Nombre = "Edgar",
-            //    Edad = 47
-            //};
-
-            //return Json(new List<Persona>(){ persona1, persona2}, JsonRequestBehavior.AllowGet);
-
-            return View();
+            var ruta = Server.MapPath("HSDC15_-_5_User_Experience.pdf");
+            return File(ruta, "application/pdf", "User_Experience.pdf");
+            //return View();
         }
 
         public ActionResult About()

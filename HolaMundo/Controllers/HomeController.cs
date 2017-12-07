@@ -1,4 +1,5 @@
-﻿using HolaMundo.Services;
+﻿using HolaMundo.DAL;
+using HolaMundo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace HolaMundo.Controllers
 {
     public class HomeController : Controller
     {
+        private PeliculasRepository _peliculasRepository;
+
+        public HomeController()
+        {
+            _peliculasRepository = new PeliculasRepository();
+        }
 
         public ActionResult Index()
         {
@@ -19,25 +26,14 @@ namespace HolaMundo.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            //var peliculasService = new PeliculasService();
-            //var model = peliculasService.ObtenerPeliculas();
-
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-            //ViewBag.UnInt = 45;
-            //ViewBag.UnaFecha = new DateTime(1800,4,7);
-            //ViewData["MiMensaje"] = "Esto fué creado con ViewData";
-
-            return View();
-        }
-
-        public ActionResult MiAction()
-        {
-            return View();
+            var model = _peliculasRepository.ObtenerPeliculas();
+            return View(model);
         }
     }
 }

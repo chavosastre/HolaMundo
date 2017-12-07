@@ -1,25 +1,40 @@
-﻿@{
+﻿@model List<HolaMundo.Models.Pelicula>
+
+@{
     ViewBag.Title = "Contact";
+    var miVariable = "un valor";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-@*<h3>@ViewBag.UnInt</h3>
-    <h3>@ViewBag.UnaFecha</h3>
-    <h3>@ViewData["MiMensaje"]</h3>*@
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div>
+    Mostrando @Model.Count Películas
+</div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Género</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pelicula in Model)
+        {
+            @*Se coloca danger si la pelicula no está en cartelera*@
+            var claseFila =(!pelicula.EstaEncartelera) ? "danger" : string.Empty;
 
-<form action="/home/contact" method="post">
-    <input type="number" id="edad" name="edad"/>
-    <input type="submit" value="Enviar"/>
-</form>
+            //if (!pelicula.EstaEncartelera)
+            //{
+            //    claseFila = "danger";
+            //}
+
+            <tr class="@claseFila">
+                <td>@pelicula.Titulo</td>
+                <td>@pelicula.Genero</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

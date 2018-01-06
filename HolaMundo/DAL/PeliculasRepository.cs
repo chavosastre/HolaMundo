@@ -17,7 +17,7 @@ namespace HolaMundo.DAL
                 },
                 new Pelicula
                 {
-                    Titulo = "<b>Mechanic: Resurrection<b><script>alert('hakeado')</script>",
+                    Titulo = "Mechanic: Resurrection",
                     EstaEncartelera = true,
                     Genero = "Acción"
                 },

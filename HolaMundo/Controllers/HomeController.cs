@@ -22,9 +22,9 @@ namespace HolaMundo.Controllers
              return View();
         }
 
-        public ActionResult About()
+        public ActionResult About(int edad)
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Tu edad es " + edad.ToString();
 
             return View();
         }
@@ -34,6 +34,11 @@ namespace HolaMundo.Controllers
             ViewBag.Message = "Your contact page.";
             var model = _peliculasRepository.ObtenerPeliculas();
             return View(model);
+        }
+
+        public ActionResult Grafica()
+        {
+            return View();
         }
     }
 }

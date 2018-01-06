@@ -1,35 +1,10 @@
-﻿@model List<HolaMundo.Models.Pelicula>
+﻿
 
 @{
     ViewBag.Title = "Contact";
+    Layout = null;
 }
 
-<div>
-    Mostrando @Model.Count Películas
-</div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Género</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var pelicula in Model)
-        {
-            @*Se coloca danger si la pelicula no está en cartelera*@
-            var claseFila =(!pelicula.EstaEncartelera) ? "danger" : string.Empty;
 
-            //if (!pelicula.EstaEncartelera)
-            //{
-            //    claseFila = "danger";
-            //}
-
-            <tr class="@claseFila">
-                <td>@pelicula.Titulo</td>
-                <td>@pelicula.Genero</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<h1>Página de Contacto</h1>

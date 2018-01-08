@@ -10,15 +10,17 @@ namespace HolaMundo.Controllers
 {
     public class HomeController : Controller
     {
-        private PeliculasRepository _peliculasRepository;
-
-        public HomeController()
-        {
-            _peliculasRepository = new PeliculasRepository();
-        }
-
+        
         public ActionResult Index()
         {
+            var persona = new Persona()
+            {
+                Nombre = "Ayanami",
+                Edad = 13,
+                Empleado = true,
+                Nacimiento = new DateTime(2018,1,6)
+            };
+            ViewBag.Propiedad = persona;
              return View();
         }
 
@@ -29,7 +31,7 @@ namespace HolaMundo.Controllers
             return View();
         }
 
-        [ChildActionOnly]
+        
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -41,5 +43,13 @@ namespace HolaMundo.Controllers
         {
             return View();
         }
+    }
+
+    public class Persona
+    {
+        public string Nombre { get; set; }
+        public int Edad { get; set; }
+        public bool Empleado { get; set; }
+        public DateTime Nacimiento { get; set; }
     }
 }

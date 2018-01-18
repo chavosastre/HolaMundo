@@ -20,7 +20,7 @@ namespace HolaMundo.Controllers
                 Empleado = true,
                 Nacimiento = new DateTime(2018,1,6)
             };
-            ViewBag.Propiedad = persona;
+            ViewBag.Persona = persona;
              return View();
         }
 

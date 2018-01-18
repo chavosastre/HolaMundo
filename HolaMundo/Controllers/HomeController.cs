@@ -15,19 +15,40 @@ namespace HolaMundo.Controllers
         
         public ActionResult Index()
         {
-
+            var personas = new List<Persona>()
+            {
+                new Persona()
+                {
+                    Nombre = "Juan",
+                    Edad=10
+                },
+                new Persona()
+                {
+                    Nombre="Pedro",
+                    Edad=11
+                }
+            };
+            ViewBag.MiListado = personas;
             return View();
         }
-         
-        [HttpPost]
-        public ActionResult Index(Persona persona)
-        {
-            ViewBag.Message = "Exitoso";
-            return View(persona);
-        }
+
 
         public ActionResult About()
         {
+            var personas = new List<Persona>()
+            {
+                new Persona()
+                {
+                    Nombre = "Juan2",
+                    Edad=10
+                },
+                new Persona()
+                {
+                    Nombre="Pedro2",
+                    Edad=11
+                }
+            };
+            ViewBag.MiListado = personas;
             ViewBag.Message = "Página acerca de";
 
             return View();

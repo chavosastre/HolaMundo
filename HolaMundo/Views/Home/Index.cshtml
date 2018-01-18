@@ -1,25 +1,6 @@
-﻿@model HolaMundo.Controllers.Persona
-
-@{
+﻿@{ 
     ViewBag.Title = "Home Page";
 }
 
-<h4>
-    @ViewBag.Message
-</h4>
 
-@using (Html.BeginForm())
-{
-    <div>
-        @Html.LabelFor(Model => Model.Nombre)
-        @Html.EditorFor(Model => Model.Nombre)
-    </div>
-    <div>
-        @Html.LabelFor(Model => Model.Edad)
-        @Html.EditorFor(Model => Model.Edad)
-    </div>
-
-@Html.EditorForModel()
-
-    <input type="submit" value="Enviar"/>
-}
+@Html.Partial("_ListadoPersonas", (List<HolaMundo.Controllers.Persona>)ViewBag.MiListado)

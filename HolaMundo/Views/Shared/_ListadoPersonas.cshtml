@@ -1,0 +1,10 @@
+﻿@model List<HolaMundo.Controllers.Persona>
+
+@foreach (var persona in Model)
+{
+    <div>
+        <span>
+            @persona.Nombre (@persona.Edad)
+        </span>
+    </div>
+}

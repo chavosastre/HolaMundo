@@ -35,20 +35,6 @@ namespace HolaMundo.Controllers
 
         public ActionResult About()
         {
-            var personas = new List<Persona>()
-            {
-                new Persona()
-                {
-                    Nombre = "Juan2",
-                    Edad=10
-                },
-                new Persona()
-                {
-                    Nombre="Pedro2",
-                    Edad=11
-                }
-            };
-            ViewBag.MiListado = personas;
             ViewBag.Message = "Página acerca de";
 
             return View();

@@ -13,15 +13,31 @@ namespace HolaMundo.Controllers
         
         public ActionResult Index()
         {
-            var persona = new Persona()
+
+            ViewBag.Milistado = ObtenerListado(); ;
+            return View();
+        }
+
+        public List<SelectListItem> ObtenerListado()
+        {
+            return new List<SelectListItem>()
             {
-                Nombre = "Ayanami",
-                Edad = 13,
-                Empleado = true,
-                Nacimiento = new DateTime(2018,1,6)
+                new SelectListItem()
+                {
+                    Text = "Sí",
+                    Value = "1"
+                },
+                new SelectListItem()
+                {
+                    Text = "No",
+                    Value = "2"
+                },
+                new SelectListItem()
+                {
+                    Text="Tal véz",
+                    Value = "3"
+                }
             };
-            ViewBag.Persona = persona;
-             return View();
         }
 
         public ActionResult About()

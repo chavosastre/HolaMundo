@@ -2,5 +2,9 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.Display("Persona")
-@Html.Editor("Persona")
+
+<br />
+<label>
+    Escoja una opción:
+</label>
+@Html.DropDownList("mmiDropDownList", (List<SelectListItem>)ViewBag.Milistado)

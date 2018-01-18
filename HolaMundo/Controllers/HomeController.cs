@@ -1,8 +1,10 @@
 ﻿using HolaMundo.DAL;
+using HolaMundo.Models;
 using HolaMundo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
@@ -14,8 +16,40 @@ namespace HolaMundo.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.Milistado = ObtenerListado(); ;
+            ViewBag.Milistado = ObtenerListado();
+            ViewBag.MiListadoEnum = ToListSelectListItem<ResultadoOperacion>();
             return View();
+        }
+         
+        public List<SelectListItem> ToListSelectListItem<T>()
+        {
+            var t = typeof(T); 
+
+            if (!t.IsEnum)
+            {
+                throw new ApplicationException("Tipo debe ser enum");
+            }
+
+            var members = t.GetFields(BindingFlags.Public | BindingFlags.Static);
+            var result = new List<SelectListItem>();
+            foreach (var member in members)
+            {
+                var attributeDescription = member.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
+                var description = member.Name;
+
+                if (attributeDescription.Any())
+                {
+                    description = ((System.ComponentModel.DescriptionAttribute)attributeDescription[0]).Description;
+                }
+
+                var valor = ((int)Enum.Parse(t, member.Name));
+                result.Add(new SelectListItem()
+                {
+                    Text = description,
+                    Value = valor.ToString()
+                });
+            }
+            return result;
         }
 
         public List<SelectListItem> ObtenerListado()

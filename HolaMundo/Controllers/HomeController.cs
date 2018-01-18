@@ -16,62 +16,14 @@ namespace HolaMundo.Controllers
         public ActionResult Index()
         {
 
-            ViewBag.Milistado = ObtenerListado();
-            ViewBag.MiListadoEnum = ToListSelectListItem<ResultadoOperacion>();
             return View();
         }
          
-        public List<SelectListItem> ToListSelectListItem<T>()
+        [HttpPost]
+        public ActionResult Index(Persona persona)
         {
-            var t = typeof(T); 
-
-            if (!t.IsEnum)
-            {
-                throw new ApplicationException("Tipo debe ser enum");
-            }
-
-            var members = t.GetFields(BindingFlags.Public | BindingFlags.Static);
-            var result = new List<SelectListItem>();
-            foreach (var member in members)
-            {
-                var attributeDescription = member.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
-                var description = member.Name;
-
-                if (attributeDescription.Any())
-                {
-                    description = ((System.ComponentModel.DescriptionAttribute)attributeDescription[0]).Description;
-                }
-
-                var valor = ((int)Enum.Parse(t, member.Name));
-                result.Add(new SelectListItem()
-                {
-                    Text = description,
-                    Value = valor.ToString()
-                });
-            }
-            return result;
-        }
-
-        public List<SelectListItem> ObtenerListado()
-        {
-            return new List<SelectListItem>()
-            {
-                new SelectListItem()
-                {
-                    Text = "Sí",
-                    Value = "1"
-                },
-                new SelectListItem()
-                {
-                    Text = "No",
-                    Value = "2"
-                },
-                new SelectListItem()
-                {
-                    Text="Tal véz",
-                    Value = "3"
-                }
-            };
+            ViewBag.Message = "Exitoso";
+            return View(persona);
         }
 
         public ActionResult About()
